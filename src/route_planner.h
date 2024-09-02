@@ -1,17 +1,20 @@
 #ifndef ROUTE_PLANNER_H
 #define ROUTE_PLANNER_H
 
-#include <iostream>
-#include <vector>
-#include <string>
 #include "route_model.h"
+#include <iostream>
+#include <string>
+#include <vector>
 
-
-class RoutePlanner {
-  public:
+class RoutePlanner
+{
+public:
     RoutePlanner(RouteModel &model, float start_x, float start_y, float end_x, float end_y);
     // Add public variables or methods declarations here.
-    float GetDistance() const {return distance;}
+    float GetDistance() const
+    {
+        return distance;
+    }
     void AStarSearch();
 
     // The following methods have been made public so we can test them individually.
@@ -20,9 +23,9 @@ class RoutePlanner {
     std::vector<RouteModel::Node> ConstructFinalPath(RouteModel::Node *);
     RouteModel::Node *NextNode();
 
-  private:
+private:
     // Add private variables or methods declarations here.
-    std::vector<RouteModel::Node*> open_list;
+    std::vector<RouteModel::Node *> open_list;
     RouteModel::Node *start_node;
     RouteModel::Node *end_node;
 

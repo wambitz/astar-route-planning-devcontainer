@@ -1,22 +1,27 @@
 {
-    "name": "Ubuntu 20.04 Route Planning - Dev Container",
-    "image": "ubuntu-focal-route-planing-workspace",
+    "name": "OSM Route Planning",
+    "image": "astar-route-planning-focal-workspace",
+    "initializeCommand": "./scripts/build_image.sh",
+    "updateRemoteUserUID": false,
     "customizations": {
         "vscode": {
             "settings": {
-                "terminal.integrated.shell.linux": "bash"
+                "terminal.integrated.defaultProfile.linux": "bash"
             },
             "extensions": [
                 "ms-vscode.cmake-tools",
-                "ms-vscode.cpptools"
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack"
             ]
         }
     },
     "postStartCommand": "bash",
-    "remoteUser": "user",
     "runArgs": [
-        "-e", "DISPLAY=host.docker.internal:0.0",
         "--rm",
-        "--name", "ubuntu-focal-route-planing"
+        "--hostname", "astar-devcontainer",
+        "--env", "DISPLAY=${localEnv:DISPLAY}",
+        "--name", "astart-route-planning-devcontainer",
+        "--volume", "/tmp/.X11-unix:/tmp/.X11-unix",
+        "--gpus", "all"
     ]
 }

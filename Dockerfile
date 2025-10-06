@@ -1,6 +1,3 @@
-# Use an official Ubuntu as a parent image
-# NOTE! Don't use 22.04 (jammy) There is an issue with: vtkXRenderWindowInteractor 
-# More info: https://github.com/PointCloudLibrary/pcl/issues/5237 
 FROM ubuntu:20.04
 
 # Set environment variables
@@ -46,6 +43,8 @@ RUN useradd -m user && \
 
 # Use sed to uncomment the force_color_prompt line in ~/.bashrc
 RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' /home/user/.bashrc
+
+USER user
 
 # Default command
 CMD ["/bin/bash"]

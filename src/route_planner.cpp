@@ -23,6 +23,7 @@ RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, floa
 
 float RoutePlanner::CalculateHValue(RouteModel::Node const *node)
 {
+    return node->distance(*end_node);
 }
 
 // TODO 4: Complete the AddNeighbors method to expand the current node by adding all unvisited neighbors to the open

@@ -58,6 +58,13 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node)
 
 RouteModel::Node *RoutePlanner::NextNode()
 {
+    // sorts by bigger to smaller so we can pop_back() the vector and have O(1) time complexity
+    std::sort(open_list.begin(), open_list.end(), [](RouteModel::Node *a, RouteModel::Node *b) {
+        return (a->g_value + a->h_value) > (b->g_value + b->h_value);
+    });
+    RouteModel::Node *node = open_list.back();
+    open_list.pop_back();
+    return node;
 }
 
 // TODO 6: Complete the ConstructFinalPath method to return the final path found from your A* search.

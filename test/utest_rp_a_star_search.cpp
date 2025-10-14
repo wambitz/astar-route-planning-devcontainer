@@ -77,6 +77,7 @@ bool NodesSame(RouteModel::Node *a, RouteModel::Node *b)
 {
     return a == b;
 }
+
 TEST_F(RoutePlannerTest, TestAddNeighbors)
 {
     route_planner.AddNeighbors(start_node);

@@ -102,8 +102,22 @@ The testing executable is also placed in the `build` directory. From within `bui
 
 * If you are facing errors with --config try to remove -- from the command.
 
-## Open devcontainer
+## Using DevContainer (Recommended)
 
-TBD
+This project includes a DevContainer with all dependencies pre-installed (Ubuntu 20.04, CMake, GCC, io2d, Cairo).
 
+### Prerequisites
+* Docker and VS Code with [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
+### Quick Start
+1. Open the project in VS Code
+2. Click "Reopen in Container" when prompted (or `F1` → "Dev Containers: Reopen in Container")
+   - First time: Docker image will build automatically (~5-10 minutes)
+3. Build: `Ctrl+Shift+B` or manually in terminal
+4. Debug: Pre-configured `launch.json` and `tasks.json` for debugging both the main program and tests
+
+### Display Setup (for visualization)
+The project requires an X server for graphical output:
+- **Linux:** Usually works out of the box
+- **macOS:** Install [XQuartz](https://www.xquartz.org/) and run `xhost +localhost`
+- **Windows:** Install [VcXsrv](https://sourceforge.net/projects/vcxsrv/) with "Disable access control"
